@@ -1,4 +1,3 @@
-https://github.com/RobertoMav/auto-diff.git
 https://towardsdatascience.com/build-your-own-automatic-differentiation-program-6ecd585eec2a
 https://www.csie.ntu.edu.tw/~cjlin/papers/autodiff/autodiff.pdf
 https://blog.esciencecenter.nl/automatic-differentiation-from-scratch-23d50c699555
