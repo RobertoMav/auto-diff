@@ -202,9 +202,17 @@ print(f"{my_string} {1}")
 my_variable = 1
 print(my_variable_does_not_exist)
 
+from typing import Dict, List, Tuple
 
 my_variable = 1
 
+List[int] = [1, 2, 3]
+
+Dict[str, int] = {"a": 1, "b": 2, "c": 3}
+
+Tuple[int, str, bool] = (1, "hello", True)
+
+type MyType = int
 
 my_variable = 1
 print(my_variable_does_not_exist)

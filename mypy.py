@@ -23,6 +23,8 @@ Tuple[int, str, bool] = (1, "hello", True)
 
 type MyType = int
 
+my_function()
+
 
 def my_function(var: MyType) -> MyType:
     return var
@@ -30,6 +32,5 @@ def my_function(var: MyType) -> MyType:
 
 print(
     my_function(1),
-    my_function("hello")
-    + "Thisdfkldnfslkfnsldkfnsdc,vclkfbndslkfsbndfjkdzbfzksj.dfb.sdk",
+    my_function("hello") + "Thisdfkldnfslkfnsldkfnsdc,vclkfbndslkfsbndfjkdzbfzksj.dfb.sdk",
 )
