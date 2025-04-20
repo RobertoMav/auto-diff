@@ -1,5 +1,4 @@
 var: int = 1
-
 from typing import Any, Dict, List, Tuple
 
 var = "hello"
@@ -21,3 +20,16 @@ List[int] = [1, 2, 3]
 Dict[str, int] = {"a": 1, "b": 2, "c": 3}
 
 Tuple[int, str, bool] = (1, "hello", True)
+
+type MyType = int
+
+
+def my_function(var: MyType) -> MyType:
+    return var
+
+
+print(
+    my_function(1),
+    my_function("hello")
+    + "Thisdfkldnfslkfnsldkfnsdc,vclkfbndslkfsbndfjkdzbfzksj.dfb.sdk",
+)
