@@ -23,8 +23,11 @@ dependencies = [
 force-wrap-aliases = true
 
 [tool.ruff.lint]
-select = ["E", "F", "B", "ERA"]
+select = ["E", "F", "B", "ERA", "W"]
 extend-select = ["PLC", "PLE", "PLW", "PLR"]
 
 [tool.mypy]
 strict = true
+
+[tool.isort]
+profile = "black"
