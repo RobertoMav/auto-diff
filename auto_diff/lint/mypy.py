@@ -21,7 +21,7 @@ Dict[str, int] = {"a": 1, "b": 2, "c": 3}
 
 Tuple[int, str, bool] = (1, "hello", True)
 
-type MyType = int
+type: MyType = int
 
 my_function()
 

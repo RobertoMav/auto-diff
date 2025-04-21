@@ -14,8 +14,10 @@ def average_rating(ratings: dict[int, int]) -> float:
     total: float = 0.0
     for rate, share in ratings.items():
         total += rate * share / 100
-        print(f"{total} in rate {rate} and share {share}")
+        print(f"{total:.2f} in rate {rate} and share {share}")
     return total
 
+pizza : str
 
+pizza = 2
 print(average_rating(SETTINGS))
