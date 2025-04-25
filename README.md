@@ -1,8 +1,11 @@
 # This is a testing repo to create a python package in the most up-to-date (apr-2025) manner
 
 ## Nice links:
+
 https://testdriven.io/blog/clean-code-python/
+
 https://google.github.io/styleguide/pyguide.html
+
 https://learngitbranching.js.org/?locale=en%2BUS
 
 ## Some additional recommendations were learned and are shared here:
@@ -74,13 +77,18 @@ using `pip install —editable ./` we can use our code as mutable, adding instal
 
 Ok, so to wrap up we can use the build cmd to build our packages and we can use pip install pkg or pip install -e {{pkg_loc}} to create a direct change in our pkg (-e == editable)
 
-110. 111. 112. 113. Publishing to Pypi and test.pypi.org + `twine upload` + Makefile `brew install make` 
+110-113. Publishing to Pypi and test.pypi.org + `twine upload` + Makefile `brew install make` 
 make issues: bad error messages, tiny change, big errors
 makefile: file to run multiple bash commands (in this case it uses sh)
 
-114. Just Pyinvoke and finally just falling back to a .sh script
-115. bash basics `set -e` makes the program stop when it fails, `set -ex` prints every single cmd that runs
+114. Just, Pyinvoke and finally just falling back to a .sh script
+115. bash basics `set -e` makes the program stop when it fails, `set -x` prints every single cmd that runs
 116. passing twine and pypi login - using .env. Creating the bash script to:
+
 a. clean our /build /dist folders
+
 b. build our proj
+
 c. publish using twine to test pypi
+
+117. Creating the prod release code + would be nice to automatically bump versions + testing needs -> use git actions or other cicd tool to make the deploy
