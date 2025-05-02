@@ -21,10 +21,12 @@ dependencies = [
     "pandas>=2.2.3",
     "ruff>=0.11.6",
     "pylint>=3.1.0",
-    "scikit-learn>=1.6.1",
     "torch>=2.6.0",
     "tqdm>=4.67.1",
     "build>=1.2.2",
+    "transformers>=4.51.3",
+    "jaxtyping>=0.3.2",
+    "torchtyping>=0.1.5",
 ]
 
 [tool.ruff.lint.isort]
@@ -39,3 +41,9 @@ strict = true
 
 [tool.isort]
 profile = "black"
+
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true
