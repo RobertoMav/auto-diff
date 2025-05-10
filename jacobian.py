@@ -23,3 +23,6 @@ def derivative_of_scalar_input(x: int, w: float) -> np.array:
 
 
 print(derivative_of_scalar_input(7, 3.2))
+
+
+def gradient_of_scalar_input(x: int, w: float) -> np.array:
