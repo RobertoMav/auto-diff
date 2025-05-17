@@ -94,4 +94,3 @@ c. publish using twine to test pypi
 117. Creating the prod release code + would be nice to automatically bump versions + testing needs -> use git actions or other cicd tool to make the deploy
 
 Git Actions - Section 13:
-    - 
