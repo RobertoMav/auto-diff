@@ -1,3 +1,3 @@
 echo "Yeah"
 
-python3 test-typing.py
+python3 auto_diff/test-typing.py

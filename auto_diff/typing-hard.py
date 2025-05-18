@@ -6,5 +6,5 @@ class Learning(TypedDict):
     crazy: float
 
 
-learner = Learning(focus=7)
+learner = Learning(focus=7, crazy=3.2)
 print(learner)

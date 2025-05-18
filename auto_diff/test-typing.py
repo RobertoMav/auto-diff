@@ -22,7 +22,7 @@ print(foo("hello"))
 
 def foo2[T](x: T) -> T:
     """
-    This function takes an argument of any type 'T'
+    Takes an argument of any type 'T'
     and returns a value of the same type 'T'.
     The '[T]' declares the type variable.
     """

@@ -1,11 +1,24 @@
 [project]
-name = "auto-diff"
-version = "0.1.0"
-description = "Add your description here"
+name = "auto-diff-RMAV"
+version = "0.0.1"
+description = "Auto-diff for RMAV"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "numpy>=2.2.5",
     "pandas>=2.2.3",
+    "pylint>=3.3.7",
     "torch>=2.7.0",
+    "torchtyping>=0.1.5",
+    "transformers>=4.51.3",
 ]
+
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true
+
+[tool.ruff]
+select = ["E", "F", "I", "B", "C90", "N", "PERF", "PLR", "PLC", "C"]
+extend-select = ["I", "B", "C90", "N", "PERF", "ERA", "PLR", "PLC", "C"]

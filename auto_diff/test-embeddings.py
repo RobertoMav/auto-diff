@@ -68,7 +68,7 @@ class VizEmbeddings:
         embedding: BaseModelOutputWithPoolingAndCrossAttentions,
         token_idx: int,
     ) -> TensorType[768]:
-        """Thing"""
+        """Thing."""
         # Filter to get the embedding of our token_id
         squeezed_embeddings: TensorType[768, 13] = embedding.last_hidden_state.squeeze()
         return squeezed_embeddings[token_idx]
