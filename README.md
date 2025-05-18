@@ -97,7 +97,7 @@ Git Actions - Section 13:
 
 
 TODOS:
-    1. use pre-commit tool
+    ~~1. use pre-commit tool~~
     2. run workflow with pre-commit
     3. publish to test pypi
     4.

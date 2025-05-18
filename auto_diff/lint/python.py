@@ -42,6 +42,8 @@ def function_nice(
 
 VALUE = "hi"
 
-VALUE.strip("a").strip("b").strip("c").strip("a").strip("b").strip("c").strip("a").strip(
+VALUE.strip("a").strip("b").strip("c").strip("a").strip("b").strip("c").strip(
     "a"
-).strip("a").strip("a").strip("a").strip("a").strip("a").strip("a").strip("a").strip("a")
+).strip("a").strip("a").strip("a").strip("a").strip("a").strip("a").strip("a").strip(
+    "a"
+).strip("a")
