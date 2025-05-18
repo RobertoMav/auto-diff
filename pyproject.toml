@@ -7,6 +7,7 @@ requires-python = ">=3.12"
 dependencies = [
     "numpy>=2.2.5",
     "pandas>=2.2.3",
+    "pre-commit>=4.2.0",
     "pylint>=3.3.7",
     "torch>=2.7.0",
     "torchtyping>=0.1.5",
@@ -20,5 +21,5 @@ publish-url = "https://test.pypi.org/legacy/"
 explicit = true
 
 [tool.ruff]
-select = ["E", "F", "I", "B", "C90", "N", "PERF", "PLR", "PLC", "C"]
-extend-select = ["I", "B", "C90", "N", "PERF", "ERA", "PLR", "PLC", "C"]
+lint.select = ["E", "F", "I", "B", "C90", "N", "PERF", "PLR", "PLC", "C"]
+lint.extend-select = ["I", "B", "C90", "N", "PERF", "ERA", "PLR", "PLC", "C", "PLE", "A", "PLW"]

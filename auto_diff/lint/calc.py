@@ -17,7 +17,8 @@ def average_rating(ratings: dict[int, int]) -> float:
         print(f"{total:.2f} in rate {rate} and share {share}")
     return total
 
-pizza : str
+
+pizza: str
 
 pizza = 2
 print(average_rating(SETTINGS))

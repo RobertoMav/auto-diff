@@ -61,7 +61,7 @@ class VizEmbeddings:
     ) -> list[int]:
         """Thing"""
         token_list: list[int] = token_ids.input_ids[0].tolist()
-        return [id for id, token in enumerate(token_list) if token == target_token_id]
+        return [idx for idx, token in enumerate(token_list) if token == target_token_id]
 
     def get_token_embedding(
         self,

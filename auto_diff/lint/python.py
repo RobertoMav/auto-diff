@@ -17,7 +17,6 @@ def add_numbers(a: int, b: int) -> int:
 print(add_numbers(1, 2))
 
 
-
 x: torch.Tensor = torch.Tensor(1.0)
 y: torch.Tensor = torch.Tensor(2.0)
 

@@ -18,7 +18,7 @@ https://learngitbranching.js.org/?locale=en%2BUS
 7. GitHub Actions improving speed = improving costs
 
 
-## Additional Notes: 
+## Additional Notes:
 How to merge to main:
 
 1. Changes → git push to branch
@@ -35,7 +35,7 @@ Auto formatter → black, ruff (linter?)
 
 Static code → detect issues without running → pylint (evals code)
 
-Flake8, radon code complexity 
+Flake8, radon code complexity
 
 mypy → static type checker
 
@@ -55,21 +55,21 @@ Only use git act when we have a PR
 
 using `pip install —editable ./` we can use our code as mutable, adding install requires to use sub libs, issues with sdist → runs code on your machine.
 
-1. Solution is the binary format (wheel distribution) `pip install wheel` 
+1. Solution is the binary format (wheel distribution) `pip install wheel`
 2. pyproj use `pip install build` to use only building packages
 3. We have too many config files the solution is pyproject.TOML
 4. PEP 621 using pyproj.toml instead of setup.cfg
 5. PEP 517 using pyproj instead of setup.py
 6. `Path(__**file__**).parent` to access the file loc; when adding diff binary files, such as .json, yaml the wheel / dist will not add them → we need to declare them
-7. Using [manifest.in](http://manifest.in) to declare the files we need, issues with recursive files - cached. Using 
-    1. `python -m build --sdist (do we need this?) --wheel ./`  
-    2. `cd dist` 
-    3. `unzip *.whl` 
+7. Using [manifest.in](http://manifest.in) to declare the files we need, issues with recursive files - cached. Using
+    1. `python -m build --sdist (do we need this?) --wheel ./`
+    2. `cd dist`
+    3. `unzip *.whl`
     4. `cd ..`  - let’s test this
-    5. adding this to pyproj file [tools.setuptools.package-data] → we can remove the manifest 
+    5. adding this to pyproj file [tools.setuptools.package-data] → we can remove the manifest
     6. We can also use poetry
 8. Reproducibility → using pyproj or requirements such as `pip install -e .` - test
-9. pipdeptree to visualize the package dependencies 
+9. pipdeptree to visualize the package dependencies
 
 106. using dev dependencies + rich print as in pip install package[dev]
 
@@ -77,7 +77,7 @@ using `pip install —editable ./` we can use our code as mutable, adding instal
 
 Ok, so to wrap up we can use the build cmd to build our packages and we can use pip install pkg or pip install -e {{pkg_loc}} to create a direct change in our pkg (-e == editable)
 
-110-113. Publishing to Pypi and test.pypi.org + `twine upload` + Makefile `brew install make` 
+110-113. Publishing to Pypi and test.pypi.org + `twine upload` + Makefile `brew install make`
 make issues: bad error messages, tiny change, big errors
 makefile: file to run multiple bash commands (in this case it uses sh)
 
@@ -94,3 +94,10 @@ c. publish using twine to test pypi
 117. Creating the prod release code + would be nice to automatically bump versions + testing needs -> use git actions or other cicd tool to make the deploy
 
 Git Actions - Section 13:
+
+
+TODOS:
+    1. use pre-commit tool
+    2. run workflow with pre-commit
+    3. publish to test pypi
+    4.

@@ -149,7 +149,7 @@ def my_function():
 
 
 if True:
-    import os
+    pass
 
 
 class MyClass:
