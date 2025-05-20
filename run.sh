@@ -14,7 +14,7 @@ function load_env() {
 # Create install function that installs uv and ruff
 function install() {
     python -m pip install --upgrade pip
-    pip install uv
+    pip install uv==0.24.0
     uv pip install --system --editable "$THIS_DIR"
 }
 
