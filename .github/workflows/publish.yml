@@ -22,6 +22,7 @@ jobs:
           python-version: 3.12
       - name: Run run.sh
         run: |
+          chmod +x run.sh
           /bin/bash run.sh install
           /bin/bash run.sh build
           /bin/bash run.sh publish:test
