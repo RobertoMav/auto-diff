@@ -15,7 +15,7 @@ function load_env() {
 function install() {
     python -m pip install --upgrade pip
     pip install uv
-    uv pip install --editable "$THIS_DIR"
+    uv pip install --system --editable "$THIS_DIR"
 }
 
 function lint() {
