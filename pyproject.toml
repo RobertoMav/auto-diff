@@ -1,6 +1,6 @@
 [project]
 name = "auto-diff-RMAV"
-version = "0.0.2"
+version = "0.0.3"
 description = "Auto-diff for RMAV"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -11,8 +11,7 @@ dependencies = [
     "pylint>=3.3.7",
     "torch>=2.7.0",
     "torchtyping>=0.1.5",
-    "transformers>=4.51.3",
-    "uv>=0.24.0",
+    "transformers>=4.51.3"
 ]
 
 [[tool.uv.index]]

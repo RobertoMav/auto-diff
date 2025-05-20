@@ -2,11 +2,20 @@ set -ex
 
 THIS_DIR=$(cd "$(dirname "$0")" && pwd)
 
+# Load environment variables from .env file if it exists
+function load_env() {
+    if [ -f "$THIS_DIR/.env" ]; then
+        set -a
+        source "$THIS_DIR/.env"
+        set +a
+    fi
+}
+
 # Create install function that installs uv and ruff
 function install() {
     python -m pip install --upgrade pip
     pip install uv
-    uv pip install --editable "$THIS_DIR"
+    uv pip install --system --editable "$THIS_DIR"
 }
 
 function lint() {
@@ -31,15 +40,20 @@ function release:prod() {
 }
 
 function publish:test() {
-    load_dotenv
-    uv publish --repository testpypi
-    --username=__token__
-    --password=$TEST_PYPI_TOKEN
+    load_env
+    uv publish --index testpypi --username=__token__ --password=$TEST_PYPI_TOKEN
 }
 
 function publish:prod() {
-    load_dotenv
-    uv publish --repository pypi
-    --username=__token__
-    --password=$PYPI_TOKEN
+    load_env
+    uv publish --index pypi --username=__token__ --password=$PYPI_TOKEN
 }
+
+# Execute the requested function
+if [ $# -eq 0 ]; then
+    echo "No command provided"
+    exit 1
+fi
+
+# Execute the function passed as argument
+"$@"
