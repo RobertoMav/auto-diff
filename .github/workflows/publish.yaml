@@ -1,0 +1,31 @@
+name: Build, Test and Publish
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+  # Same as above
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  # Build, Test and Publish
+  build-test-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.12
+      - name: Install dependencies
+        run: |
+          /bin/bash run.sh install
+          /bin/bash run.sh build
+          /bin/bash run.sh publish:test
+        env:
+          TEST_PYPI_TOKEN: ${{ secrets.TEST_PYPI_TOKEN }}
