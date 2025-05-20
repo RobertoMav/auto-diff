@@ -3,7 +3,7 @@ set -ex
 THIS_DIR=$(cd "$(dirname "$0")" && pwd)
 
 # Create install function that installs uv and ruff
-functioninstall() {
+function install() {
     python -m pip install --upgrade pip
     pip install uv
     uv pip install --editable "$THIS_DIR"
