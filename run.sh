@@ -2,6 +2,15 @@ set -ex
 
 THIS_DIR=$(cd "$(dirname "$0")" && pwd)
 
+# Load environment variables from .env file if it exists
+function load_env() {
+    if [ -f "$THIS_DIR/.env" ]; then
+        set -a
+        source "$THIS_DIR/.env"
+        set +a
+    fi
+}
+
 # Create install function that installs uv and ruff
 function install() {
     python -m pip install --upgrade pip
@@ -31,15 +40,11 @@ function release:prod() {
 }
 
 function publish:test() {
-    load_dotenv
-    uv publish --repository testpypi
-    --username=__token__
-    --password=$TEST_PYPI_TOKEN
+    load_env
+    uv publish --repository testpypi --username=__token__ --password=$TEST_PYPI_TOKEN
 }
 
 function publish:prod() {
-    load_dotenv
-    uv publish --repository pypi
-    --username=__token__
-    --password=$PYPI_TOKEN
+    load_env
+    uv publish --repository pypi --username=__token__ --password=$PYPI_TOKEN
 }
