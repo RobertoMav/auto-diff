@@ -48,3 +48,12 @@ function publish:prod() {
     load_env
     uv publish --repository pypi --username=__token__ --password=$PYPI_TOKEN
 }
+
+# Execute the requested function
+if [ $# -eq 0 ]; then
+    echo "No command provided"
+    exit 1
+fi
+
+# Execute the function passed as argument
+"$@"
