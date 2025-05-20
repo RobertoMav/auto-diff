@@ -14,7 +14,7 @@ function load_env() {
 # Create install function that installs uv and ruff
 function install() {
     python -m pip install --upgrade pip
-    pip install uv==0.7.6
+    pip install uv
     uv pip install --system --editable "$THIS_DIR"
 }
 
@@ -41,12 +41,12 @@ function release:prod() {
 
 function publish:test() {
     load_env
-    uv publish --repository testpypi --username=__token__ --password=$TEST_PYPI_TOKEN
+    uv publish --index testpypi --username=__token__ --password=$TEST_PYPI_TOKEN
 }
 
 function publish:prod() {
     load_env
-    uv publish --repository pypi --username=__token__ --password=$PYPI_TOKEN
+    uv publish --index pypi --username=__token__ --password=$PYPI_TOKEN
 }
 
 # Execute the requested function
