@@ -21,4 +21,4 @@ publish-url = "https://test.pypi.org/legacy/"
 explicit = true
 
 [tool.ruff]
-lint.select = ["E", "F", "I", "B", "N", "PERF", "PLR"]
+select = ["E", "F", "I", "B", "N", "PERF", "PLR"]

@@ -18,7 +18,7 @@ function install() {
     uv pip install --system --editable "$THIS_DIR"
 }
 
-function lint() {
+function lint_and_format() {
     pre-commit run --all-files
 }
 

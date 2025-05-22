@@ -20,11 +20,19 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: 3.12
-      - name: Run run.sh
+      - name: Install dependencies
         run: |
-          chmod +x run.sh
           /bin/bash run.sh install
+
+      - name: Lint and format
+        run: |
+          /bin/bash run.sh lint_and_format
+
+      - name: Build
+        run: |
           /bin/bash run.sh build
+      - name: Publish to testpypi
+        run: |
           /bin/bash run.sh publish:test
         env:
           TEST_PYPI_TOKEN: ${{ secrets.TEST_PYPI_TOKEN }}
