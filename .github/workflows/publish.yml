@@ -22,17 +22,19 @@ jobs:
           python-version: 3.12
       - name: Install dependencies
         run: |
-          /bin/bash run.sh install
+          git tag
+          /bin/bash -x run.sh install
 
       - name: Lint and format
         run: |
-          /bin/bash run.sh lint_and_format
+          /bin/bash -x run.sh lint_and_format:ci
 
       - name: Build
         run: |
-          /bin/bash run.sh build
+          /bin/bash -x run.sh build
+
       - name: Publish to testpypi
         run: |
-          /bin/bash run.sh publish:test
+          /bin/bash -x run.sh publish:test
         env:
           TEST_PYPI_TOKEN: ${{ secrets.TEST_PYPI_TOKEN }}

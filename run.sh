@@ -11,7 +11,7 @@ function load_env() {
     fi
 }
 
-# Create install function that installs uv and ruff
+# Create install function that installs uv and dependencies
 function install() {
     python -m pip install --upgrade pip
     pip install uv
@@ -22,14 +22,16 @@ function lint_and_format() {
     pre-commit run --files '*.py'
 }
 
-# Create build function that runs ruff check and format
+function lint_and_format:ci() {
+    SKIP=no-commit-to-branch pre-commit run --files '*.py'
+}
+
 function build() {
     uv build "$THIS_DIR"
 }
 
-
 function release:test() {
-    lint
+    lint_and_format
     build
     publish:test
 }
