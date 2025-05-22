@@ -21,4 +21,5 @@ publish-url = "https://test.pypi.org/legacy/"
 explicit = true
 
 [tool.ruff]
-select = ["E", "F", "I", "B", "N", "PERF", "PLR"]
+lint.select = ["E", "F", "I", "B", "N", "PERF", "PLR"]
+line-length = 99

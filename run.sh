@@ -19,7 +19,7 @@ function install() {
 }
 
 function lint_and_format() {
-    pre-commit run --all-files
+    pre-commit run --files '*.py'
 }
 
 # Create build function that runs ruff check and format

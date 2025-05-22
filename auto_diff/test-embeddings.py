@@ -86,21 +86,15 @@ tokens_1: BatchEncoding = embeddings_return_1["tokens"]
 
 # Pooler output is the classification task for the whole doc
 # Last hidden state is the embedding per token of the doc
-embeddings_1: BaseModelOutputWithPoolingAndCrossAttentions = embeddings_return_1[
-    "embeddings"
-]
+embeddings_1: BaseModelOutputWithPoolingAndCrossAttentions = embeddings_return_1["embeddings"]
 
 embeddings_return_2 = v.get_embeddings(SENTENCE_2)
 tokens_2: BatchEncoding = embeddings_return_2["tokens"]
-embeddings_2: BaseModelOutputWithPoolingAndCrossAttentions = embeddings_return_2[
-    "embeddings"
-]
+embeddings_2: BaseModelOutputWithPoolingAndCrossAttentions = embeddings_return_2["embeddings"]
 
 embeddings_return_3 = v.get_embeddings(SENTENCE_3)
 tokens_3: BatchEncoding = embeddings_return_3["tokens"]
-embeddings_3: BaseModelOutputWithPoolingAndCrossAttentions = embeddings_return_3[
-    "embeddings"
-]
+embeddings_3: BaseModelOutputWithPoolingAndCrossAttentions = embeddings_return_3["embeddings"]
 
 
 bank_token_info: BatchEncoding = v.tokenizer("bank", add_special_tokens=False)
@@ -111,15 +105,9 @@ bank_indices_2: list[int] = v.find_token_indices(tokens_2, bank_token_id)
 bank_indices_3: list[int] = v.find_token_indices(tokens_3, bank_token_id)
 
 bank_embeddings: list[int | None] = []
-bank_embeddings_1: TensorType[768] = v.get_token_embedding(
-    embeddings_1, bank_indices_1[0]
-)
-bank_embeddings_2: TensorType[768] = v.get_token_embedding(
-    embeddings_2, bank_indices_2[0]
-)
-bank_embeddings_3: TensorType[768] = v.get_token_embedding(
-    embeddings_3, bank_indices_3[0]
-)
+bank_embeddings_1: TensorType[768] = v.get_token_embedding(embeddings_1, bank_indices_1[0])
+bank_embeddings_2: TensorType[768] = v.get_token_embedding(embeddings_2, bank_indices_2[0])
+bank_embeddings_3: TensorType[768] = v.get_token_embedding(embeddings_3, bank_indices_3[0])
 
 sim_12: TensorType[1] = cosine_similarity(bank_embeddings_1, bank_embeddings_2, dim=0)
 sim_13: TensorType[1] = cosine_similarity(bank_embeddings_1, bank_embeddings_3, dim=0)

@@ -31,3 +31,12 @@ def foo2[T](x: T) -> T:
 
 print(foo2(1))
 print(foo2("hello"))
+
+
+class Learning(TypedDict):
+    focus: int
+    crazy: float
+
+
+learner = Learning(focus=7, crazy=3.2)
+print(learner)
