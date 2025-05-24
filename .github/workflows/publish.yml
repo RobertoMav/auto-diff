@@ -33,7 +33,7 @@ jobs:
       - name: Install pre-commit
         run: |
           pip install uv
-          uv pip install pre-commit
+          uv pip install pre-commit --system
       - name: Lint and format
         run: |
           SKIP=no-commit-to-branch pre-commit run --files '*.py'
@@ -50,7 +50,7 @@ jobs:
       - name: Build
         run: |
           pip install uv
-          uv pip install pre-commit
+          uv pip install pre-commit --system
           /bin/bash -x run.sh build
 
       - name: Upload wheel and sdist
