@@ -51,6 +51,18 @@ function publish:prod() {
     uv publish --index pypi --username=__token__ --password=$PYPI_TOKEN
 }
 
+function tag_release() {
+    load_env
+    VERSION=$(grep '^version = ' "$THIS_DIR/pyproject.toml" | sed 's/version = "\(.*\)"/\1/')
+    git tag "v$VERSION"
+}
+
+function bump_version() {
+    load_env
+    VERSION=$(grep '^version = ' "$THIS_DIR/pyproject.toml" | sed 's/version = "\(.*\)"/\1/')
+    sed -i "s/^version = .*/version = \"$VERSION\"/" "$THIS_DIR/pyproject.toml"
+}
+
 # Execute the requested function
 if [ $# -eq 0 ]; then
     echo "No command provided"
