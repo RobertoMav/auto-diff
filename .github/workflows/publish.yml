@@ -105,4 +105,3 @@ jobs:
       - name: Push tag
         run: |
           git push origin --tags
-          /bin/bash -x run.sh bump-version
