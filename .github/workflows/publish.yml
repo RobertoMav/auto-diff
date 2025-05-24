@@ -12,29 +12,87 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-test-publish:
+  check-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Tag the release version
+        run: |
+          /bin/bash -x run.sh tag_release
+
+  lint-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - name: Set up Python 3.12
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: 3.12
-      - name: Install dependencies
+      - name: Install pre-commit
         run: |
-          git tag
-          /bin/bash -x run.sh install
-
+          pip install uv
+          uv pip install pre-commit --system
       - name: Lint and format
         run: |
-          /bin/bash -x run.sh lint_and_format:ci
+          SKIP=no-commit-to-branch pre-commit run --files '*.py'
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
 
       - name: Build
         run: |
+          pip install uv
+          uv pip install pre-commit --system
           /bin/bash -x run.sh build
+
+      - name: Upload wheel and sdist
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheel-and-sdist
+          path: ./dist/*
+
+  publish:
+    needs:
+      - check-version
+      - lint-format
+      - build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: ${{ runner.os }}-uv-${{ hashFiles('**/pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-uv-
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+      - name: Download wheel and sdist
+        uses: actions/download-artifact@v4
+        with:
+          name: wheel-and-sdist
+          path: ./dist/*
+      - name: Install uv and dependencies
+        run: |
+          /bin/bash -x run.sh install
 
       - name: Publish to testpypi
         run: |
           /bin/bash -x run.sh publish:test
         env:
           TEST_PYPI_TOKEN: ${{ secrets.TEST_PYPI_TOKEN }}
+      - name: Push tag
+        run: |
+          git push origin --tags
+          /bin/bash -x run.sh bump-version
