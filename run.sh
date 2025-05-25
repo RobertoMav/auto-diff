@@ -80,6 +80,7 @@ function bump_version() {
     echo "$NEW_VERSION" > "$THIS_DIR/version.txt"
     git add version.txt
     git commit -m "Bump version to $(cat version.txt)"
+    git push origin HEAD:main
 }
 
 # Execute the requested function
