@@ -57,6 +57,11 @@ function tag_release() {
     git tag "v$VERSION"
 }
 
+function tag_release:ci() {
+    tag_release
+    git push origin HEAD:main --tags
+}
+
 function bump_version() {
     load_env
     CURRENT_VERSION=$(cat "$THIS_DIR/version.txt")

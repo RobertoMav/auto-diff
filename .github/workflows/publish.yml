@@ -99,4 +99,4 @@ jobs:
           /bin/bash -x run.sh bump_version
           git add version.txt
           git commit -m "Bump version to $(cat version.txt)"
-          git push origin HEAD:main --tags
+          /bin/bash -x run.sh tag_release:ci
