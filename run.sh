@@ -59,8 +59,20 @@ function tag_release() {
 
 function bump_version() {
     load_env
-    VERSION=$(cat "$THIS_DIR/version.txt")
-    sed -i "s/^version = .*/version = \"$VERSION\"/" "$THIS_DIR/pyproject.toml"
+    CURRENT_VERSION=$(cat "$THIS_DIR/version.txt")
+
+    # Parse version components
+    IFS='.' read -r -a version_parts <<< "$CURRENT_VERSION"
+    MAJOR=${version_parts[0]}
+    MINOR=${version_parts[1]}
+    PATCH=${version_parts[2]}
+
+    # Increment patch version
+    NEW_PATCH=$((PATCH + 1))
+    NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
+
+    # Update version.txt
+    echo "$NEW_VERSION" > "$THIS_DIR/version.txt"
 }
 
 # Execute the requested function
