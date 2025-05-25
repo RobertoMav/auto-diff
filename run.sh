@@ -78,6 +78,8 @@ function bump_version() {
 
     # Update version.txt
     echo "$NEW_VERSION" > "$THIS_DIR/version.txt"
+    git add version.txt
+    git commit -m "Bump version to $(cat version.txt)"
 }
 
 # Execute the requested function

@@ -96,7 +96,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          /bin/bash -x run.sh bump_version
-          git add version.txt
-          git commit -m "Bump version to $(cat version.txt)"
           /bin/bash -x run.sh tag_release:ci
+          /bin/bash -x run.sh bump_version
