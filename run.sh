@@ -53,13 +53,13 @@ function publish:prod() {
 
 function tag_release() {
     load_env
-    VERSION=$(grep '^version = ' "$THIS_DIR/pyproject.toml" | sed 's/version = "\(.*\)"/\1/')
+    VERSION=$(cat "$THIS_DIR/version.txt")
     git tag "v$VERSION"
 }
 
 function bump_version() {
     load_env
-    VERSION=$(grep '^version = ' "$THIS_DIR/pyproject.toml" | sed 's/version = "\(.*\)"/\1/')
+    VERSION=$(cat "$THIS_DIR/version.txt")
     sed -i "s/^version = .*/version = \"$VERSION\"/" "$THIS_DIR/pyproject.toml"
 }
 

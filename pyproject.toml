@@ -1,6 +1,5 @@
 [project]
 name = "auto-diff-RMAV"
-version = "0.0.7"
 description = "Auto-diff for RMAV"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -24,3 +23,6 @@ explicit = true
 [tool.ruff]
 lint.select = ["E", "F", "I", "B", "N", "PERF", "PLR"]
 line-length = 99
+
+[tool.setuptools.dynamic]
+version = {file = "version.txt"}
